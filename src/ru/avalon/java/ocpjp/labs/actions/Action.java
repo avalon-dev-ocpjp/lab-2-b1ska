@@ -1,5 +1,7 @@
 package ru.avalon.java.ocpjp.labs.actions;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,40 +17,61 @@ public interface Action extends Runnable, AutoCloseable {
      * Запускает потоковый объект на исполнение в отдельном потоке исполнения.
      */
     default void start(String action) {
+
         /*
          * TODO №1 Реализуйте метод start интерфейса Action.
          */
+        
         switch (action) {
-
+        
             case "copy":
-                try (FileCopyAction fcopy = new FileCopyAction()){
+                try (FileCopyAction fcopy = new FileCopyAction()) {
                     fcopy.run();
+
                 } catch (Exception ex) {
-            Logger.getLogger(Action.class.getName()).log(Level.SEVERE, null, ex);
-        }
-                
+                    Logger.getLogger(Action.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 break;
             case "move":
-               try(FileMoveAction fmove = new FileMoveAction()){
-                fmove.run();
-               } catch (Exception ex) {
-            Logger.getLogger(Action.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                try (FileMoveAction fmove = new FileMoveAction()) {
+                    fmove.run();
+                } catch (Exception ex) {
+                    Logger.getLogger(Action.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
             case "create":
-                try(FileCreateAction fcreate = new FileCreateAction()){
-                fcreate.run();
+                try (FileCreateAction fcreate = new FileCreateAction()) {
+                    fcreate.run();
                 } catch (Exception ex) {
-            Logger.getLogger(Action.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                    Logger.getLogger(Action.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
             case "delete":
-                try(FileDeleteAction fdelete = new FileDeleteAction()){
-                fdelete.run();
+                try (FileDeleteAction fdelete = new FileDeleteAction()) {
+                    fdelete.run();
                 } catch (Exception ex) {
-            Logger.getLogger(Action.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                    Logger.getLogger(Action.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
+            case "rename":
+                try (FileRenameAction frename = new FileRenameAction()) {
+                    frename.run();
+                } catch (Exception ex) {
+                    Logger.getLogger(Action.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+
+            case "getinfo":
+                 try (FileGetInfo fgetinfo = new FileGetInfo()) {
+                    fgetinfo.run();
+                } catch (Exception ex) {
+                    Logger.getLogger(Action.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
+                break;
+                
+             
 
         }
     }

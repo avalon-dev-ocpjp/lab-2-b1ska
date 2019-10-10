@@ -15,10 +15,11 @@ import java.util.logging.Logger;
  * @author JAVA
  */
 public class FileCreateAction implements Action{
-    String file = "Exam808_SampleQuestion.pdf";
-    String path = "D:\\Users\\Bozhenkov\\lab2\\";
+    String file = "fff.txt";
+    String path = "D:\\dd\\resources\\";
+    File f;
 public void create() throws IOException{
-    File f = new File(path, file);
+    f = new File(path, file);
     if(f.isFile()){
         System.out.println("File is already existed");
     }else {
@@ -39,7 +40,7 @@ public void create() throws IOException{
 
     @Override
     public void close() throws Exception {
-       
+       f= null;
     }
     
 }

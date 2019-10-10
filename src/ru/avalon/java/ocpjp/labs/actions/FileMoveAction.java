@@ -1,6 +1,7 @@
 package ru.avalon.java.ocpjp.labs.actions;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,8 +17,8 @@ public class FileMoveAction implements Action {
     /**
      * {@inheritDoc}
      */
-    String filename = "D:\\Users\\Bozhenkov\\lab2\\Exam808_SampleQuestion.pdf";
-    String dest = "D:\\Users\\Bozhenkov\\Exam808_SampleQuestion.pdf";
+    String filename = "D:\\dd\\resources\\fff.txt";
+    String dest = "D:\\dd\\fff.txt";
     File source = new File(filename);
     Path p1 = source.toPath();
 
@@ -48,9 +49,8 @@ public class FileMoveAction implements Action {
                 Files.delete(p1);
                 System.out.println("New copy was created");
                 if (!new File(filename).exists()){
-                    System.out.println("Original file deletd");
-                } else {
-                }
+                    System.out.println("Original file deleted");
+                } 
             } catch (IOException ex) {
                 Logger.getLogger(FileMoveAction.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -63,6 +63,9 @@ public class FileMoveAction implements Action {
      */
     @Override
     public void close() throws Exception {
+        
+        source = null;
+        destination = null;
         /*
          * TODO №5 Реализуйте метод close класса FileMoveAction
          */

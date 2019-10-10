@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ru.avalon.java.ocpjp.labs.actions.Action;
+import ru.avalon.java.ocpjp.labs.actions.CMD;
 import ru.avalon.java.ocpjp.labs.actions.FileCopyAction;
 import ru.avalon.java.ocpjp.labs.actions.FileMoveAction;
 
@@ -45,7 +46,7 @@ public class Main extends ConsoleUI<Commands> {
      */
     @Override
     protected void onCommand(Commands command) throws IOException {
-        Action cmd = new FileCopyAction();
+        CMD cmd = new CMD();
         switch (command) {
             case copy:
                 /*
@@ -71,8 +72,14 @@ public class Main extends ConsoleUI<Commands> {
             case create:
                 cmd.start("create");
                 break;
+            case rename:
+                cmd.start("rename");
+                break;
+            case getinfo:
+                cmd.start("getinfo");
+                break;
             /*
-                 * TODO №9 Обработайте необработанные команды
+             * TODO №9 Обработайте необработанные команды
              */
         }
     }

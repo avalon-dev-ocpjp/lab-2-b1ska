@@ -16,8 +16,8 @@ public class FileCopyAction implements Action {
     /**
      * {@inheritDoc}
      */
-    String filename = "D:\\Users\\Bozhenkov\\lab2\\Exam808_SampleQuestion.pdf";
-    String dest = "D:\\Users\\Bozhenkov\\Exam808_SampleQuestion.pdf";
+    String filename = "D:\\dd\\resources\\fff.txt";
+    String dest = "D:\\dd\\fff.txt";
     File source = new File(filename);
     Path p1 = source.toPath();
 
@@ -25,6 +25,9 @@ public class FileCopyAction implements Action {
     Path p2 = destination.toPath();
 
     private void copyfile() throws IOException {
+        if (!source.exists()){
+            System.out.println("File does not exist");}
+        else{  
         if (!new File(dest).exists()) {
             Files.copy(p1, p2, StandardCopyOption.COPY_ATTRIBUTES);
             System.out.println("New copy was created");
@@ -35,6 +38,7 @@ public class FileCopyAction implements Action {
             Files.copy(p1, p2, StandardCopyOption.COPY_ATTRIBUTES);
             System.out.println("New copy was created");
         }
+    }
     }
 
     @Override
@@ -56,6 +60,9 @@ public class FileCopyAction implements Action {
      */
     @Override
     public void close() throws Exception {
+        source = null;
+        destination = null;
+        
         /*
          * TODO №3 Реализуйте метод close класса FileCopyAction
          */

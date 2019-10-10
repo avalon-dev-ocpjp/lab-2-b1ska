@@ -13,11 +13,12 @@ import java.io.File;
  */
 public class FileDeleteAction implements Action{
 
-     String file = "Exam808_SampleQuestion.pdf";
-    String path = "D:\\Users\\Bozhenkov\\lab2\\";
+    String file = "fff.txt";
+    String path = "D:\\dd\\resources";
+    File f = new File(path, file);
     public void delete(){
         
-        File f = new File(path, file);
+        ;
         if(f.isFile()){
         boolean deleted = f.delete();
         if(deleted)
@@ -36,7 +37,7 @@ public class FileDeleteAction implements Action{
 
     @Override
     public void close() throws Exception {
-        
+      f = null;
     }
     
 }
