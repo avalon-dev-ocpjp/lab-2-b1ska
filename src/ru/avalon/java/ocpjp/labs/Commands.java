@@ -8,7 +8,9 @@ public enum Commands {
     copy,
     exit,
     create,
-    delete
+    delete,
+    rename,
+    getinfo
     /*
      * TODO №8 К текущему списку команд, добавьте ещё две команды
      */
